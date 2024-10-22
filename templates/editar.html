@@ -1,0 +1,35 @@
+{% extends "header.html"%}
+{% block conteudo %}  
+<a href="{{url_for('index')}}" class="btn btn-danger"> <- </a>
+      <form  class="formularioJogo" action="{{url_for('atualizar')}}" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <input type="hidden" name="id" value="{{ id }}"> </input>
+            {{form.csrf_token()}}
+          <div class="form-group">
+            {{form.nome.label(class = "form-label")}}
+            {{form.nome(class = "form-control")}}
+           </div>
+          <div class="form-group">
+            {{form.categoria.label(class = "form-label")}}
+            {{form.categoria(class = "form-control")}}
+          </div>
+          <div class="form-group">
+            {{form.console.label(class = "form-label")}}
+            {{form.console(class = "form-control")}}
+          </div>
+
+          <figure class="img-thumbnail col-md-4">
+            <img class="img-fluid" src="{{url_for('img', nome_arquivo=capa_jogo)}}">
+            <figcaption>
+
+              <div class="form-group">
+                <input type="file" id="arquivo" name="arquivo" class="form-control" accept=".jpg">
+              </div>
+            </figcaption>
+            </img>
+        </figure>
+      </div class = "form-group "> {{form.salvar(class = "btn btn-primary")}}</div>
+        </fieldset>
+      </form>
+
+{%endblock%} 

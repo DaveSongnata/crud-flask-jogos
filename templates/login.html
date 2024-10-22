@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Animated Login Form</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login-page/style.css') }}">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+	<link rel="stylesheet" href="{{url_for('static', filename = '/css/bootstrap.css')}}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<img class="wave" src="{{ url_for('static', filename='img/wave.png') }}">
+	<div class="container">
+		<div class="img"> 
+			<img src="{{ url_for('static', filename='img/bg.svg') }}">
+		</div>
+		<div class="login-content">
+			<form method="POST" action="{{url_for('autenticar')}}">
+				<img src="{{ url_for('static', filename='img/avatar.svg') }}">
+				<h2 class="title">Bem-vindo</h2>
+           		<div class="input-div one">
+           		   <div class="i">
+           		   		<i class="fas fa-user"></i>
+           		   </div>
+				   <input type="hidden" name = "proxima" value="{{ proxima }}"/>
+				 {{form.csrf_token}}
+           		   <div class="div">
+					{{form.nickname.label()}}
+					{{form.nickname(class = "input")}}
+           		   </div>
+           		</div>
+           		<div class="input-div pass">
+           		   <div class="i"> 
+           		    	<i class="fas fa-lock"></i>
+           		   </div>
+           		   <div class="div">
+					{{form.senha.label(class = "h5")}}
+					{{form.senha(class = "input")}}
+            	   </div>
+            	</div>
+            	<!-- <a href="#">Forgot Password?</a>  não implementei uma rota de forgot :/-->
+            	{{form.login(class = "btn")}}
+            </form>
+
+        </div>
+
+
+
+    </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/js-login/main.js') }}"></script>
+</body>
+</html>
